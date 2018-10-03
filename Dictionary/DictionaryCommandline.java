@@ -33,8 +33,7 @@ public class DictionaryCommandline {
     public void dictionaryAdvanced() throws IOException {
         dict_manager.insertFromFile();
         showAllWords();
-        dictionarySearcher();
-        dict_manager.dictionaryExportToFile();
+        dict_manager.dictionaryLookup();
     }
 
     public void dictionarySearcher() throws IOException {

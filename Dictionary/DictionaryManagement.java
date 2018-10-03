@@ -26,14 +26,21 @@ public class DictionaryManagement {
 
     public void insertFromCommandline() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int m = 0;
         System.out.println("Enter number of words :");
-        int n = br.read();
-        for (int i = 1; i <= n; i++) {
+        m = Integer.parseInt(br.readLine());
+        while (br.ready()) {
+            br.readLine();
+        }
+
+        for (int i = 1; i <= m; i++) {
+
             System.out.println("Enter target word: ");
             String English = br.readLine();
             System.out.println("Enter explain word: ");
             String Vietnamese = br.readLine();
             dictionary.insertWord(English, Vietnamese);
+
         }
     }
 
@@ -61,7 +68,7 @@ public class DictionaryManagement {
      * @throws IOException
      */
     public void insertFromFile() throws IOException {
-        FileReader fr = new FileReader("C:\\Users\\thanh\\Desktop\\AssignmentOOP\\dictionaries.txt");
+        FileReader fr = new FileReader("dictionaries.txt");
         BufferedReader br = new BufferedReader(fr);
         while (br.ready()) {
             String lineWord = br.readLine();
