@@ -6,7 +6,7 @@ class TrieNode {
     private int idArray;
 
     public TrieNode() {
-        children = new TrieNode[26];
+        children = new TrieNode[ALPHABET_SIZE];
         idArray = -1;
         for (int i = 0; i < ALPHABET_SIZE; i++) {
             children[i] = null;
@@ -29,6 +29,7 @@ class TrieNode {
 
 public class Trie {
     private TrieNode root;
+    private final int MAX_NUM_OF_SUGGESTIONS = 10;
 
     public Trie() {
         root = new TrieNode();
@@ -91,10 +92,13 @@ public class Trie {
             return -1; // Can't find anything
     }
 
-    public ArrayList<String> suggestion(String s) {
+    // find num words suggestion for prefix s
+    public ArrayList<String> suggestion(String s, int num) {
+        if (num == 0) return null;
         String key = s.toLowerCase();
-        if(s.length()==0)
+        if(s.length() == 0)
             return null;
+
         ArrayList<String> possibilities = new ArrayList<String>();
         
         TrieNode pointer = root;
@@ -106,20 +110,29 @@ public class Trie {
                 return null;
             }
         }
+
         for (int i = 0; i < TrieNode.ALPHABET_SIZE; i++) {
             if (pointer.getChildren()[i] != null) {
                 char addition_char = (char) ((int) ('a') + i);
                 if (pointer.getChildren()[i].getIdArray() != -1) {
                     possibilities.add(s + addition_char);
+                    if ((--num) == 0) break;
                 }
-                ArrayList<String> additionalArrayList = suggestion(s + addition_char);
+                ArrayList<String> additionalArrayList = suggestion(s + addition_char, num);
+                num -= additionalArrayList.size();
                 possibilities.addAll(additionalArrayList);
+                if (num == 0) break;
             }
         }
-        
+    
         return possibilities;
     }
 
+
+    public ArrayList<String> suggestion(String s)
+    {
+        return this.suggestion(s, MAX_NUM_OF_SUGGESTIONS);
+    }
     public static void main(String[] args) {
         Trie test = new Trie();
         test.insert("abc", 0);
