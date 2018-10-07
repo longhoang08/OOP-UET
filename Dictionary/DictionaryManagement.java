@@ -78,6 +78,7 @@ public class DictionaryManagement {
             if (parts.length == 2) {
                 dictionary.insertWord(parts[0], parts[1]);
             } else {
+                // there are no word in this line
             }
         }
         fr.close();
