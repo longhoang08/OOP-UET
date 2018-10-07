@@ -110,6 +110,8 @@ public class CommandLineDictionary
 
                 case 7:
                 {
+                    cmd.dictionaryManager.dictionaryExportToFile();
+                    System.out.println("Export completed");
                     break;
                 }
                 
