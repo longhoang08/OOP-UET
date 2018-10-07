@@ -95,7 +95,9 @@ public class DictionaryManagement {
         if (check == null) {
             System.out.println("Sorry, We did not find your word in our Dictionary");
         } else {
-            System.out.println("We found " + check.size() + "result(s)");
+            String add = "";
+            if (check.size() > 1) add = "s";
+            System.out.println("We found " + check.size() + " result" + add);
             for (int i = 0; i < check.size(); i++) {
                 System.out.println(check.get(i));
             }
