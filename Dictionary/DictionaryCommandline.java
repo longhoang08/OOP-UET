@@ -6,9 +6,15 @@ public class DictionaryCommandline {
     private DictionaryManagement dict_manager;
 
     // Constructor
-    public DictionaryCommandline(Dictionary d) {
-        dictionary = d;
-        dict_manager = new DictionaryManagement(d);
+    public DictionaryCommandline(Dictionary dictionary) {
+        this.dictionary = dictionary;
+        dict_manager = new DictionaryManagement(dictionary);
+    }
+
+    public DictionaryCommandline(Dictionary dictionary, DictionaryManagement dict_manager)
+    {
+        this.dictionary = dictionary;
+        this.dict_manager = dict_manager;
     }
     // End constructor
 
@@ -30,11 +36,14 @@ public class DictionaryCommandline {
         showAllWords();
     }
 
+    // creating an menu
     public void dictionaryAdvanced() throws IOException {
         dict_manager.insertFromFile();
         showAllWords();
         dict_manager.dictionaryLookup();
     }
+
+   
 
     public void dictionarySearcher() throws IOException {
         System.out.println("What are you looking for ?");
@@ -48,7 +57,9 @@ public class DictionaryCommandline {
             if (results.size() == 0) {
                 System.out.println("We can't find any suggestion for you, Sorry!");
             } else {
-                System.out.println("We found " + results.size() + " result(s)");
+                String add = "";
+                 if (results.size() > 1) add = "s";
+                System.out.println("We found " + results.size() + " result" + add);
                 for (int i = 0; i < results.size(); i++) {
                     System.out.println(results.get(i));
                 }
