@@ -27,7 +27,7 @@ public class CommandLineDictionary
         boolean isContinue = true;
 
         System.out.println("English - Vietnamese Dictionary - Command line version");
-        System.out.println("Author: Hoang Bao Long - Nguyen Thanh Dat");
+        System.out.println("Author: Long Hoang Bao - Dat Nguyen Thanh");
         System.out.println();
         System.out.println("Press enter to continue");
         br.readLine();
@@ -53,7 +53,8 @@ public class CommandLineDictionary
             }
             catch (NumberFormatException e)
             {
-                System.out.println("Error!!!. Wrong output formart. You should input a number in range [1,8]!");
+                cls();
+                System.out.println("Error!!!. Wrong input formart. You should input a number in range [1,8]!");
                 System.out.println("Please input again!!!");
                 System.out.println();
                 continue;
