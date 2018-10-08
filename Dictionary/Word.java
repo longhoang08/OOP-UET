@@ -21,7 +21,8 @@ public class Word {
     }
 
     public void addExplain(String s) {
-        if (word_explain == null) word_explain = new ArrayList<String>();
+        if (word_explain == null) 
+            word_explain = new ArrayList<String>();
         word_explain.add(s);
     }
 
@@ -31,12 +32,6 @@ public class Word {
     }
 
     public ArrayList<String> getWordExplain() {
-        if (word_explain == null) return null;
-        ArrayList <String> result = new ArrayList<String>();
-        for(String s : word_explain)
-        {
-            result.add(s);
-        }
-        return result;
+        return word_explain;
     }
 }
