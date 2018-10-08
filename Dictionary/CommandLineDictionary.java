@@ -20,18 +20,19 @@ public class CommandLineDictionary
         cmd.dictionary = new  Dictionary();
         cmd.dictionaryManager = new DictionaryManagement(cmd.dictionary);
         cmd.cmdDictionary = new DictionaryCommandline(cmd.dictionary, cmd.dictionaryManager);
-    
-        boolean isImport = false;
-        //creat an menu
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        boolean isContinue = true;
-
+        
         System.out.println("English - Vietnamese Dictionary - Command line version");
         System.out.println("Author: Long Hoang Bao - Dat Nguyen Thanh");
         System.out.println();
         System.out.println("Press enter to continue");
         br.readLine();
+
         cls();
+        
+        //creat an menu
+        boolean isImport = false;
+        boolean isContinue = true;
         
         do
         {
@@ -59,6 +60,7 @@ public class CommandLineDictionary
                 System.out.println();
                 continue;
             }
+        
             cls();
             boolean isPress = true;
             switch (select)
