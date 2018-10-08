@@ -24,11 +24,25 @@ public class DictionaryManagement {
      * @throws IOException
      */
 
-    public void insertFromCommandline() throws IOException {
+    public void insertFromCommandline() throws IOException, Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int m = 0;
+        int m = -1;
         System.out.println("Enter number of words :");
-        m = Integer.parseInt(br.readLine());
+        while (m <= 0)
+        {
+            try
+            {
+                m = Integer.parseInt(br.readLine());
+            } catch (NumberFormatException e)
+            {
+                // do nothing
+            }
+            if (m <= 0) 
+            {
+                System.out.println("Sorry. You must enter a positive integer number!!!");
+                System.out.println("Please input again!!!");
+            }
+        }
         while (br.ready()) {
             br.readLine();
         }
@@ -40,7 +54,6 @@ public class DictionaryManagement {
             System.out.println("Enter explain word: ");
             String Vietnamese = br.readLine();
             dictionary.insertWord(English, Vietnamese);
-
         }
     }
 
