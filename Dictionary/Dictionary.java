@@ -19,7 +19,7 @@ public class Dictionary {
     public void insertWord(String English, String Vietnamese) {
         int check = storeTargetWord.search(English);
         if (check == -1) {
-            //System.out.println("DCM sai roi: " + English);
+            //System.out.println("DCM sai roi: " + English);        //DCM xoa di!
             Word new_word = new Word(English, Vietnamese);
             Dict.add(new_word);
             storeTargetWord.insert(English, Dict.size() - 1);
@@ -47,14 +47,29 @@ public class Dictionary {
             ArrayList<String> explainWords = Dict.get(check).getWordExplain();
             if (explainWords.contains(Vietnamese)) {
                 explainWords.remove(Vietnamese);
-                if (explainWords.size() == 0) {
+                if (explainWords.size() == 0) {     
+                    int end = Dict.size();
+
+                    Word remove = Dict.get(check);
+                    Word lastWord = Dict.get(end-1);
+                    Word temp = new Word();
+
+                    temp.copy(lastWord);
+                    lastWord.copy(remove);
+                    remove.copy(temp);
+
                     storeTargetWord.remove(English);
+                    Dict.remove(Dict.get(end-1));
+
+                /*          BEFORE FIX BUG
+                    storeTargetWord.remove(English);
+                    Dict.remove(Dict.get(check));
+                */ 
                 }
                 return true;
             } else {
                 return false;
             }
-
         } else {
             return false;
         }
