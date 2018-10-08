@@ -24,6 +24,7 @@ public class DictionaryCommandline {
         System.out.printf("%-6s|%-35s|%s%n%n", "No", "English", "Vietnamese");
         int N = 1;
         for (int i = 0; i < Dict_copy.size(); i++) {
+            if (Dict_copy.get(i) == null) continue;
             for (int j = 0; j < Dict_copy.get(i).getWordExplain().size(); j++) {
                 System.out.printf("%-6d|%-35s|%s%n", N++, Dict_copy.get(i).getWordTarget(),
                         Dict_copy.get(i).getWordExplain().get(j));
@@ -31,7 +32,7 @@ public class DictionaryCommandline {
         }
     }
 
-    public void dictionaryBasic() throws IOException {
+    public void dictionaryBasic() throws IOException, Exception {
         dict_manager.insertFromCommandline();
         showAllWords();
     }
