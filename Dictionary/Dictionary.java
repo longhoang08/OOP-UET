@@ -4,6 +4,7 @@ import java.io.*;
 public class Dictionary {
     private ArrayList<Word> Dict;
     private Trie storeTargetWord;
+    //private ArrayList<Integer> emptyId;
 
     // Constructors
     public Dictionary() {
@@ -18,14 +19,15 @@ public class Dictionary {
     public void insertWord(String English, String Vietnamese) {
         int check = storeTargetWord.search(English);
         if (check == -1) {
+            //System.out.println("DCM sai roi: " + English);
             Word new_word = new Word(English, Vietnamese);
             Dict.add(new_word);
             storeTargetWord.insert(English, Dict.size() - 1);
         } else {
             Word w = Dict.get(check);
-            ArrayList<String> al = w.getWordExplain();
-            if(!al.contains(Vietnamese)) {
-                al.add(Vietnamese);
+            if (!w.getWordExplain().contains(Vietnamese));
+            {
+                w.addExplain(Vietnamese);
             }
         }
     }
