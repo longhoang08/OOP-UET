@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+
+            /*
+                @reading from stdin
+            */
+            "command": "javac ${file} & java ${fileBasenameNoExtension}",
+            
+            /* 
+                @reading from a.txt
+            */
+            //"command": "javac ${file} & java ${fileBasenameNoExtension} < a.txt",
+            
+            /* 
+                @reading from a.txt & import algs4
+            */
+            //"command": "javac -cp algs4.jar;. ${file} & java -cp algs4.jar;. ${fileBasenameNoExtension} < a.txt",
+            
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
