@@ -1,5 +1,4 @@
-# English - Vietnamese Dictionary
-#Command Line version
+# English - Vietnamese Dictionary (Command Line version)
 
 Author: Hoang Bao Long - longhoang08 & Nguyen Thanh Dat - thanhdatuetk62
 
