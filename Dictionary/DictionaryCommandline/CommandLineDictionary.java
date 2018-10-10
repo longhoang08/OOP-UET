@@ -75,10 +75,9 @@ public class CommandLineDictionary
                     }
                     else
                     {
-                        isImport = true;
-                        cmd.dictionaryManager.insertFromFile();
-                        System.out.println("Import successed!!!");
-                        
+                        isImport = cmd.dictionaryManager.insertFromFile();
+                        if (isImport)
+                            System.out.println("Import successed!!!");
                     }
                     break;
                 }

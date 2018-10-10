@@ -97,24 +97,35 @@ public class DictionaryManagement {
      *
      * @throws IOException
      */
-    public void insertFromFile() throws IOException {
-        FileReader fr = new FileReader("dictionaries.txt");
-        BufferedReader br = new BufferedReader(fr);
-        while (br.ready()) {
-            String lineWord = br.readLine();
-            String[] parts = lineWord.split("\\t");
-            if (parts.length == 2) {
-                if (!validWord(parts[0]))
-                {
-                    System.out.println("Error!!! " + parts[0] + " is not a English word!!!. Can't import this word to dictionary.");
-                    System.out.println();
+    public boolean insertFromFile() throws IOException, FileNotFoundException {
+        try
+        {
+            FileReader fr = new FileReader("dictionaries.txt");
+            BufferedReader br = new BufferedReader(fr);
+            while (br.ready()) {
+                String lineWord = br.readLine();
+                String[] parts = lineWord.split("\\t");
+                if (parts.length == 2) {
+                    if (!validWord(parts[0]))
+                    {
+                        System.out.println("Error!!! " + parts[0] + " is not a English word!!!. Can't import this word to dictionary.");
+                        System.out.println();
+                    }
+                    else dictionary.insertWord(parts[0], parts[1]);
+                } else {
+                    // there are no word in this line
                 }
-                else dictionary.insertWord(parts[0], parts[1]);
-            } else {
-                // there are no word in this line
             }
+            fr.close();
+            return true;
+        }  
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Import failed!!!");
+            System.out.println("Sorry. We cant' find dictionary.txt to inport data");
+            System.out.println("Please make sure that you have dictionary.txt in this folder and import again!!!");
+            return false;
         }
-        fr.close();
     }
 
     /**
