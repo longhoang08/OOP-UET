@@ -1,2 +1,2 @@
-javac *.java
-java CommandLineDictionary
+cls
+java -jar CommandLineDictionary.jar
