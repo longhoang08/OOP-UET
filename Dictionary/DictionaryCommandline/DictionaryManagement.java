@@ -122,8 +122,8 @@ public class DictionaryManagement {
         catch (FileNotFoundException e)
         {
             System.out.println("Import failed!!!");
-            System.out.println("Sorry. We cant' find dictionary.txt to inport data");
-            System.out.println("Please make sure that you have dictionary.txt in this folder and import again!!!");
+            System.out.println("Sorry. We can't find 'dictionary.txt' file to inport data.");
+            System.out.println("Please make sure that you have 'dictionary.txt' file in this folder and import again!!!");
             return false;
         }
     }
@@ -211,7 +211,7 @@ public class DictionaryManagement {
         Dictionary dictionary = new Dictionary();
         DictionaryManagement dict_manager = new DictionaryManagement(dictionary);
         dict_manager.insertFromFile();
-        System.out.println(dict_manager.dictionary.getDict().get(0).getWordTarget());
+        //System.out.println(dict_manager.dictionary.getDict().get(0).getWordTarget());
 
     }
 
