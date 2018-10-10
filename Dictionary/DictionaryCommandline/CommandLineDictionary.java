@@ -22,6 +22,8 @@ public class CommandLineDictionary
         cmd.cmdDictionary = new DictionaryCommandline(cmd.dictionary, cmd.dictionaryManager);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
+        cls();
+
         System.out.println("English - Vietnamese Dictionary - Command line version");
         System.out.println("Author: Long Hoang Bao - Dat Nguyen Thanh");
         System.out.println();

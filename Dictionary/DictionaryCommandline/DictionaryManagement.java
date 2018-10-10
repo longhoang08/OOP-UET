@@ -24,6 +24,15 @@ public class DictionaryManagement {
      * @throws IOException
      */
 
+    public boolean validWord(String s)
+    {
+        for(int i = 0; i < s.length(); i++)
+        {
+            if (!Character.isLetter(s.charAt(i))) return false;
+        }
+        return true;
+    }
+
     public void insertFromCommandline() throws IOException, Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int m = -1;
@@ -51,6 +60,12 @@ public class DictionaryManagement {
 
             System.out.println("Enter target word: ");
             String English = br.readLine();
+            while(!validWord(English))
+            {
+                System.out.println("Sorry. You must input an English Word with anphabet character!!!");
+                System.out.println("Please input again!!!");
+                English = br.readLine();
+            }
             System.out.println("Enter explain word: ");
             String Vietnamese = br.readLine();
             dictionary.insertWord(English, Vietnamese);
