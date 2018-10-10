@@ -24,6 +24,15 @@ public class DictionaryManagement {
      * @throws IOException
      */
 
+    public boolean validWord(String s)
+    {
+        for(int i = 0; i < s.length(); i++)
+        {
+            if (!Character.isLetter(s.charAt(i))) return false;
+        }
+        return true;
+    }
+
     public void insertFromCommandline() throws IOException, Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int m = -1;
@@ -51,6 +60,12 @@ public class DictionaryManagement {
 
             System.out.println("Enter target word: ");
             String English = br.readLine();
+            while(!validWord(English))
+            {
+                System.out.println("Sorry. You must input an English Word with anphabet character!!!");
+                System.out.println("Please input again!!!");
+                English = br.readLine();
+            }
             System.out.println("Enter explain word: ");
             String Vietnamese = br.readLine();
             dictionary.insertWord(English, Vietnamese);
@@ -82,19 +97,35 @@ public class DictionaryManagement {
      *
      * @throws IOException
      */
-    public void insertFromFile() throws IOException {
-        FileReader fr = new FileReader("dictionaries.txt");
-        BufferedReader br = new BufferedReader(fr);
-        while (br.ready()) {
-            String lineWord = br.readLine();
-            String[] parts = lineWord.split("\\t");
-            if (parts.length == 2) {
-                dictionary.insertWord(parts[0], parts[1]);
-            } else {
-                // there are no word in this line
+    public boolean insertFromFile() throws IOException, FileNotFoundException {
+        try
+        {
+            FileReader fr = new FileReader("dictionaries.txt");
+            BufferedReader br = new BufferedReader(fr);
+            while (br.ready()) {
+                String lineWord = br.readLine();
+                String[] parts = lineWord.split("\\t");
+                if (parts.length == 2) {
+                    if (!validWord(parts[0]))
+                    {
+                        System.out.println("Error!!! " + parts[0] + " is not a English word!!!. Can't import this word to dictionary.");
+                        System.out.println();
+                    }
+                    else dictionary.insertWord(parts[0], parts[1]);
+                } else {
+                    // there are no word in this line
+                }
             }
+            fr.close();
+            return true;
+        }  
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Import failed!!!");
+            System.out.println("Sorry. We can't find 'dictionary.txt' file to inport data.");
+            System.out.println("Please make sure that you have 'dictionary.txt' file in this folder and import again!!!");
+            return false;
         }
-        fr.close();
     }
 
     /**
@@ -180,7 +211,7 @@ public class DictionaryManagement {
         Dictionary dictionary = new Dictionary();
         DictionaryManagement dict_manager = new DictionaryManagement(dictionary);
         dict_manager.insertFromFile();
-        System.out.println(dict_manager.dictionary.getDict().get(0).getWordTarget());
+        //System.out.println(dict_manager.dictionary.getDict().get(0).getWordTarget());
 
     }
 
