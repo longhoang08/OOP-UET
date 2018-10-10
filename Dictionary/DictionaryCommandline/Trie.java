@@ -29,7 +29,7 @@ class TrieNode {
 
 public class Trie {
     private TrieNode root;
-    private final int MAX_NUM_OF_SUGGESTIONS = 10;
+    //private final int MAX_NUM_OF_SUGGESTIONS = 10;
 
     public Trie() {
         root = new TrieNode();
