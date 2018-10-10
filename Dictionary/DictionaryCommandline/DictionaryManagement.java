@@ -104,7 +104,12 @@ public class DictionaryManagement {
             String lineWord = br.readLine();
             String[] parts = lineWord.split("\\t");
             if (parts.length == 2) {
-                dictionary.insertWord(parts[0], parts[1]);
+                if (!validWord(parts[0]))
+                {
+                    System.out.println("Error!!! " + parts[0] + " is not a English word!!!. Can't import this word to dictionary.");
+                    System.out.println();
+                }
+                else dictionary.insertWord(parts[0], parts[1]);
             } else {
                 // there are no word in this line
             }
