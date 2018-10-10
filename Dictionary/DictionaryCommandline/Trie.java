@@ -131,7 +131,7 @@ public class Trie {
 
     public ArrayList<String> suggestion(String s)
     {
-        return this.suggestion(s, MAX_NUM_OF_SUGGESTIONS);
+        return this.suggestion(s, -1);
     }
     public static void main(String[] args) {
         Trie test = new Trie();
