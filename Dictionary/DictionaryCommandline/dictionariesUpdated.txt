@@ -11,7 +11,6 @@ game	tro choi
 game	giai tri
 game	chuong trinh truyen hinh
 game	dien tu
-game	tro choi dien tu
 ball	bong
 sex	gioi tinh
 house	nha
@@ -54,21 +53,11 @@ proof	bang chung
 pronoun	phat am
 prohibit	cam
 problem	van de
-boost	tang toc
-quality	chat luong
-table	ban
-angry	gian du
-ancestor	to tien
-aunt	thim
-ugly	xau xi
-tooth	rang
-eraser	tay
-folder	thu muc
+soul	tam hon
+scan	truy tim
+union	vung mien
+ultimate	dot pha
 girl	co gai
-family	gia dinh
-farm	canh dong
-fast	nhanh
-cut	cat
-left	trai
-right	phai
-mouse	chuot
+boy	chang trai
+beat	nhip dieu
+world	the gioi
