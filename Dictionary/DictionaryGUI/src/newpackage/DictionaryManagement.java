@@ -19,7 +19,7 @@ public class DictionaryManagement {
      * @throws IOException
      */
     public void insertFromFile() throws IOException {
-        File fileDir = new File("src\\dictionaries.txt");
+        File fileDir = new File("..\\src\\dictionaries.txt");
         BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileDir), "UTF8"));
         while (br.ready()) {
             String lineWord = br.readLine();

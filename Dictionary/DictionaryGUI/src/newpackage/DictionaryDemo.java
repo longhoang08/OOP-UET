@@ -1136,7 +1136,10 @@ public class DictionaryDemo extends javax.swing.JFrame {
     private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
         // TODO add your handling code here:
         try {
-            String s = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
+            
+            String r = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
+            byte ptext[] = r.getBytes();
+            String s = new String(ptext, "utf8");
             jLabel20.setText(s);
         } catch (Exception e) {
             e.getMessage();
@@ -1160,12 +1163,11 @@ public class DictionaryDemo extends javax.swing.JFrame {
     private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
         // TODO add your handling code here:
         try {
-            String s = jLabel20.getText();
+            String s = translator.callUrlAndParseResult2("en", "vi", jTextField1.getText());
+           
             InputStream sound = audio.getAudio(s, "vi");
             audio.play(sound);
-        } catch (IOException e) {
-            e.getMessage();
-        } catch (JavaLayerException e) {
+        } catch (Exception e) {
             e.getMessage();
         }
     }//GEN-LAST:event_jLabel31MouseClicked
