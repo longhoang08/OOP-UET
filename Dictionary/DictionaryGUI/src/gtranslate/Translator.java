@@ -16,15 +16,6 @@ import java.net.URLEncoder;
 import org.json.JSONArray;
 
 public class Translator {
-
- public static void main(String[] args) throws Exception 
- {
-
-  Translator http = new Translator();
-  String word = http.callUrlAndParseResult("en", "vi", "hello");
-  
-  System.out.println(word);
- }
  
  public String callUrlAndParseResult(String langFrom, String langTo,
                                              String word) throws Exception 
@@ -80,12 +71,6 @@ public class Translator {
  }
  private String parseResult(String inputJson) throws Exception
  {
-  /*
-   * inputJson for word 'hello' translated to language Hindi from English-
-   * [[["नमस्ते","hello",,,1]],,"en"]
-   * We have to get 'नमस्ते ' from this json.
-   */
-  
   JSONArray jsonArray = new JSONArray(inputJson);
   JSONArray jsonArray2 = (JSONArray) jsonArray.get(0);
   JSONArray jsonArray3 = (JSONArray) jsonArray2.get(0);
