@@ -15,8 +15,31 @@ ball	bong
 sex	gioi tinh
 house	nha
 hello	xin chao
-fuckyou	dmm
-laughmyassout	cuoi cai dmm
+fuckyou	chiet tiet
+low	thap
+high	cao
+chief	dau bep
+illustrate	lam sang to
+illegal	trai luat
+instruction	huong dan
+comment	binh luan
+company	cong ty
+math	toan
+literal	van
+english	tieng anh
+morning	sang
+afternoon	chieu
+evening	toi
+special	dac biet
+eliminate	loai bo
+delete	loai bo
+insert	chen, them vao
+chinese	trung quoc
+vietnam	viet nam
+lunch	trua
+health	suc khoe
+lost	mat
+laugh	cuoi
 project	du an
 quantity	so luong
 ass	hau mon
