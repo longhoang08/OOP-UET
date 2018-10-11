@@ -106,11 +106,11 @@ public class Trie {
             return -1; // Can't find anything
     }
 
-    public ArrayList<String> suggestion(String s) {
+    public ArrayList<String> suggestion(String s, boolean permission) {
         
         
         ArrayList<String> possibilities = new ArrayList<String>();
-        if (s.length() == 0)
+        if (s.length() == 0&&!permission)
             return possibilities;
         String key = s.toLowerCase();
         TrieNode pointer = root;
@@ -129,13 +129,10 @@ public class Trie {
                 if (pointer.getChildren()[i].getIdArray() != -1) {
                     possibilities.add(s + addition_char);
                 }
-                ArrayList<String> additionalArrayList = suggestion(s + addition_char);
+                ArrayList<String> additionalArrayList = suggestion(s + addition_char, permission);
                 
               
                      possibilities.addAll(additionalArrayList);
-                     
-                
-  
             }
         }
 

@@ -1,10 +1,9 @@
 package newpackage;
 import java.util.*;
-import java.io.*;
 
 public class Dictionary {
     private ArrayList<Word> Dict;
-    private Trie storeTargetWord;
+    public Trie storeTargetWord;
 
     // Constructors
     public Dictionary() {
@@ -59,8 +58,8 @@ public class Dictionary {
         }
     }
 
-    public ArrayList<String> searcher(String s) {
-        ArrayList<String> suggestions = storeTargetWord.suggestion(s);
+    public ArrayList<String> searcher(String s, boolean permission) {
+        ArrayList<String> suggestions = storeTargetWord.suggestion(s, permission);
         int selfCheck = storeTargetWord.search(s);
         if (selfCheck != -1) {
             suggestions.add(s);
