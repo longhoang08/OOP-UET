@@ -488,11 +488,11 @@ public class DictionaryDemo extends javax.swing.JFrame {
         Database.setBackground(new java.awt.Color(255, 255, 255));
 
         scrollPane.setBorder(null);
-        scrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         explain.setBackground(new java.awt.Color(255, 255, 255));
+        explain.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         explain.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
