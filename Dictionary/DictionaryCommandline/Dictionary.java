@@ -47,6 +47,15 @@ public class Dictionary {
             return Dict.get(check).getWordExplain();
         }
     }
+    
+    public Word findWord(String English) {
+        int check = storeTargetWord.search(English);
+        if (check == -1) {
+            return null;
+        } else {
+            return Dict.get(check);
+        }
+    }
 
     public boolean removeWord(String English, String Vietnamese) {
         int check = storeTargetWord.search(English);
