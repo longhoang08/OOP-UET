@@ -96,9 +96,7 @@ public class Trie {
     public ArrayList<String> suggestion(String s, int num) {
         if (num == 0) return null;
         String key = s.toLowerCase();
-        if(s.length() == 0)
-            return null;
-
+        
         ArrayList<String> possibilities = new ArrayList<String>();
         
         TrieNode pointer = root;
