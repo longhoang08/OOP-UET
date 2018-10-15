@@ -19,8 +19,8 @@ public class DictionaryCommandline {
     // End constructor
 
     // ------------------- METHODS ---------------------------------------------
-    public void showAllWords() {
-        ArrayList<Word> Dict_copy = new ArrayList<Word>(dictionary.getDict());
+    public void showAllWords(ArrayList <Word> Dict_copy) 
+    {    
         System.out.printf("%-6s|%-35s|%s%n%n", "No", "English", "Vietnamese");
         int N = 1;
         for (int i = 0; i < Dict_copy.size(); i++) {
@@ -30,6 +30,21 @@ public class DictionaryCommandline {
                         Dict_copy.get(i).getWordExplain().get(j));
             }
         }
+    }
+
+    public void showAllWords(boolean isAlphabetOrder)
+    {
+        ArrayList<Word> Dict_copy;
+        if (!isAlphabetOrder) 
+        {
+            Dict_copy = new ArrayList<Word>(dictionary.getDict());
+            showAllWords(Dict_copy);
+        }
+        else
+        {
+            Dict_copy = AllWord();
+        }
+        
     }
 
     public void dictionaryBasic() throws IOException, Exception {

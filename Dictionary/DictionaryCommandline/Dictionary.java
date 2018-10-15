@@ -6,6 +6,13 @@ public class Dictionary {
     private Trie storeTargetWord;
     //private ArrayList<Integer> emptyId;
 
+    /**
+     * @return the storeTargetWord
+     */
+    public Trie getStoreTargetWord() {
+        return storeTargetWord;
+    }
+
     // Constructors
     public Dictionary() {
         Dict = new ArrayList<Word>();
