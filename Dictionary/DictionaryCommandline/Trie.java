@@ -1,7 +1,7 @@
 import java.util.*;
 
 class TrieNode {
-    static final int ALPHABET_SIZE = 26;
+    protected static final int ALPHABET_SIZE = 26;
     private TrieNode[] children;
     private int idArray;
 
@@ -127,7 +127,6 @@ public class Trie {
     
         return possibilities;
     }
-
 
     public ArrayList<String> suggestion(String s)
     {
