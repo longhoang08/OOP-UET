@@ -84,7 +84,25 @@ public class CommandLineDictionary
 
                 case 2:
                 {
-                    cmd.cmdDictionary.showAllWords();
+                    System.out.println("Would you like to sort results in abphabet order? (y/n)");
+                    boolean isAlphabetOrder = false;
+                    boolean ok = true;
+                    while(ok)
+                    {
+                        ok = false;
+                        String choose = br.readLine();
+                        if (choose.equals("y") || choose.equals("Y") || choose.equals("yes") || choose.equals("Yes"))
+                            isAlphabetOrder = true;
+                        else if (!(choose.equals("n") || choose.equals("N") || choose.equals("no") || choose.equals("No")))
+                        {
+                            cls();
+                            System.out.println("Sorry. You must choose Yes (y) or No (n)!!!");
+                            System.out.println("Please choose again!!!!");
+                            ok = true;
+                        }
+                    }
+                    cls();
+                    cmd.cmdDictionary.showAllWords(isAlphabetOrder);
                     break;
                 }
 

@@ -4,7 +4,7 @@ import java.io.*;
 public class DictionaryCommandline {
     private Dictionary dictionary;
     private DictionaryManagement dict_manager;
-
+    private ArrayList <Word> listWordToPrint;
     // Constructor
     public DictionaryCommandline(Dictionary dictionary) {
         this.dictionary = dictionary;
@@ -19,32 +19,48 @@ public class DictionaryCommandline {
     // End constructor
 
     // ------------------- METHODS ---------------------------------------------
-    public void showAllWords(ArrayList <Word> Dict_copy) 
+    public void showAllWords()
     {    
-        System.out.printf("%-6s|%-35s|%s%n%n", "No", "English", "Vietnamese");
-        int N = 1;
-        for (int i = 0; i < Dict_copy.size(); i++) {
-            if (Dict_copy.get(i) == null) continue;
-            for (int j = 0; j < Dict_copy.get(i).getWordExplain().size(); j++) {
-                System.out.printf("%-6d|%-35s|%s%n", N++, Dict_copy.get(i).getWordTarget(),
-                        Dict_copy.get(i).getWordExplain().get(j));
+        if (listWordToPrint == null)
+            listWordToPrint = new ArrayList<Word>(dictionary.getDict());
+        boolean isEmpty = true;
+        int N = 0;
+        for (int i = 0; i < listWordToPrint.size(); i++) {
+            if (listWordToPrint.get(i) == null) continue;
+            for (int j = 0; j < listWordToPrint.get(i).getWordExplain().size(); j++) {
+                if (isEmpty)
+                {
+                    isEmpty = false;
+                    System.out.printf("%-6s|%-35s|%s%n%n", "No", "English", "Vietnamese");                     
+                }
+                System.out.printf("%-6d|%-35s|%s%n", ++N, listWordToPrint.get(i).getWordTarget(),
+                        listWordToPrint.get(i).getWordExplain().get(j));
             }
         }
+        if (isEmpty)
+        {
+            System.out.println("The are's any word in this Dictionay!!!");
+        }
+        listWordToPrint = null;
     }
 
     public void showAllWords(boolean isAlphabetOrder)
     {
-        ArrayList<Word> Dict_copy;
-        if (!isAlphabetOrder) 
+        if (isAlphabetOrder) 
         {
-            Dict_copy = new ArrayList<Word>(dictionary.getDict());
-            showAllWords(Dict_copy);
+            ArrayList <String> listWord = new ArrayList <>();   
+            listWord = dictionary.getStoreTargetWord().suggestion("");
+            if (listWord != null) 
+            {
+                listWordToPrint = new ArrayList<>();
+                for(String English : listWord)
+                {
+                    Word EnglishWord = dictionary.findWord(English);
+                    if (EnglishWord != null) listWordToPrint.add(EnglishWord);
+                }
+            }
         }
-        else
-        {
-            Dict_copy = AllWord();
-        }
-        
+        this.showAllWords();
     }
 
     public void dictionaryBasic() throws IOException, Exception {
@@ -52,7 +68,6 @@ public class DictionaryCommandline {
         showAllWords();
     }
 
-    // creating an menu
     public void dictionaryAdvanced() throws IOException {
         dict_manager.insertFromFile();
         showAllWords();
