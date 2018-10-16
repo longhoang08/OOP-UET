@@ -374,7 +374,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel8.setText("English-Vietnamese");
 
         showAll.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        showAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Select_All_20px.png"))); // NOI18N
+        showAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Select_All_32px_1.png"))); // NOI18N
         showAll.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
         showAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showAll.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -389,7 +389,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel9.setText("Show All Words");
 
         export.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_to_Cloud_20px_1.png"))); // NOI18N
+        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Export_32px_1.png"))); // NOI18N
         export.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
         export.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         export.addMouseListener(new java.awt.event.MouseAdapter() {
