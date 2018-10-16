@@ -62,7 +62,7 @@ public class DictionaryManagement {
             String English = br.readLine();
             while(!validWord(English))
             {
-                System.out.println("Sorry. You must input an English Word with anphabet character!!!");
+                System.out.println("Sorry. You must input an English Word with alphabet character!!!");
                 System.out.println("Please input again!!!");
                 English = br.readLine();
             }

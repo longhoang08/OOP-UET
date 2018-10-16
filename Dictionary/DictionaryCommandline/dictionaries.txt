@@ -84,4 +84,7 @@ girl	co gai
 boy	chang trai
 beat	nhip dieu
 world	the gioi
+laptop	may tinh xach tay
+source	nguon
+
 
