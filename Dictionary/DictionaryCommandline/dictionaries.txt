@@ -15,7 +15,6 @@ ball	bong
 sex	gioi tinh
 house	nha
 hello	xin chao
-fuckyou	chiet tiet
 low	thap
 high	cao
 chief	dau bep
@@ -42,11 +41,9 @@ lost	mat
 laugh	cuoi
 project	du an
 quantity	so luong
-ass	hau mon
 translate	phien dich
 transport	phuong tien giao thong
 transform	chuyen doi
-asshole	lo hau mon
 hell	dia nguc
 head	dau
 fill	lam day
@@ -86,5 +83,23 @@ beat	nhip dieu
 world	the gioi
 laptop	may tinh xach tay
 source	nguon
-
+garden	san
+tea	tra
+elephant	voi
+estimate	xap xi
+expect	ky vong
+develope	phat trien
+deep	sau
+lamp	den
+sing	hat
+shout	gao thet
+gun	sung
+allow	cho phep
+all	tat ca
+ant	kien
+author	tac gia
+ancestor	to tien
+array	day, hang
+application	ung dung
+cow	bo
 
