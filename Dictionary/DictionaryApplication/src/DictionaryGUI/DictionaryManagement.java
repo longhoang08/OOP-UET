@@ -28,8 +28,19 @@ public class DictionaryManagement {
                 dictionary.insertWord(parts[0], parts[1]);
             }
         }
-        br.close();
-        
+        br.close();    
+    }
+    public void dictionaryExportToFile() throws IOException{
+        File fileDir = new File("DictionariesUpdated.txt");
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileDir), "UTF8"));
+        ArrayList<Word> dict = dictionary.getDict();
+        for(Word w : dict) {
+            String en = w.getWordTarget();
+            String vi = w.getWordExplain();
+            writer.write(en + "\t" + "<html>" + vi + "</html>");
+            writer.newLine();
+        }
+        writer.close();
     }
 
 }

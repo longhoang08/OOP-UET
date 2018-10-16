@@ -2,6 +2,7 @@ package DictionaryGUI;
 
 import gtranslate.Audio;
 import gtranslate.Translator;
+import java.awt.Cursor;
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -11,7 +12,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javazoom.jl.decoder.JavaLayerException;
 
@@ -50,13 +53,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         dict_manager.insertFromFile();
         showAllWords();
 
-        if (!checkConnection()) {
-            connectionStatus.setText("No Internet Connection");
-            Status.setText("No Internet Connection");
-        } else {
-            Status.setText("Online");
-        }
-
     }
 
     /**
@@ -66,26 +62,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
      *
      * @return
      */
-    public void refresh() throws Exception {
-        if (!checkConnection()) {
-            connectionStatus.setText("No Internet Connection");
-            Status.setText("No Internet Connection");
-        } else {
-            Status.setText("Online");
-            connectionStatus.setText("Connected");
-        }
-    }
-
-    public boolean checkConnection() throws Exception {
-        Process process = java.lang.Runtime.getRuntime().exec("ping www.google.com");
-        int x = process.waitFor();
-        if (x == 1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     private void invisibleControl() {
         SelectedWord.setVisible(false);
         reDefine.setVisible(false);
@@ -165,14 +141,11 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         showAll = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        export = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Status = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
         Database = new javax.swing.JPanel();
         scrollPane = new javax.swing.JScrollPane();
@@ -182,10 +155,10 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        gtranslate = new javax.swing.JLabel();
+        enSound = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
+        viSound = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -226,6 +199,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         removeButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         removeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Trash_20px_1.png"))); // NOI18N
         removeButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        removeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         removeButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 removeButtonMouseClicked(evt);
@@ -235,6 +209,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         addButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Plus_Math_20px.png"))); // NOI18N
         addButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        addButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addButtonMouseClicked(evt);
@@ -244,6 +219,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         soundButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         soundButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Speaker_20px_1.png"))); // NOI18N
         soundButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        soundButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         soundButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 soundButtonMouseClicked(evt);
@@ -253,6 +229,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         editButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         editButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Edit_20px.png"))); // NOI18N
         editButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        editButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         editButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 editButtonMouseClicked(evt);
@@ -262,6 +239,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Google_20px.png"))); // NOI18N
         jLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -271,6 +249,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Home_20px.png"))); // NOI18N
         jLabel11.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
@@ -378,6 +357,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         searchButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Search_20px_1.png"))); // NOI18N
         searchButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(153, 0, 153), null));
+        searchButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 searchButtonMouseClicked(evt);
@@ -396,6 +376,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         showAll.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         showAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Select_All_20px.png"))); // NOI18N
         showAll.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        showAll.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         showAll.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 showAllMouseClicked(evt);
@@ -407,14 +388,20 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Show All Words");
 
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_to_Cloud_20px_1.png"))); // NOI18N
-        jLabel13.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        export.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Upload_to_Cloud_20px_1.png"))); // NOI18N
+        export.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(102, 0, 102), null));
+        export.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        export.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                exportMouseClicked(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Consolas", 1, 11)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText("Save Changes");
+        jLabel16.setText("Export ");
 
         jLabel17.setFont(new java.awt.Font("Consolas", 1, 11)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -423,33 +410,15 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Info_32px.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Status::");
-
         Status.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         Status.setForeground(new java.awt.Color(153, 242, 65));
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Refresh_20px.png"))); // NOI18N
-        jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
-        jLabel18.setFont(new java.awt.Font("Consolas", 1, 11)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("Refresh");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -462,7 +431,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(export, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -470,19 +439,13 @@ public class DictionaryApplication extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel7))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(target, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel3)
-                        .addGap(3, 3, 3)
+                        .addGap(72, 72, 72)
                         .addComponent(Status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -497,16 +460,12 @@ public class DictionaryApplication extends javax.swing.JFrame {
                         .addComponent(showAll, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(export, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                        .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, 0)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(target, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
                     .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -586,21 +545,23 @@ public class DictionaryApplication extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Translation_20px.png"))); // NOI18N
-        jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 153)));
-        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+        gtranslate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gtranslate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Translation_20px.png"))); // NOI18N
+        gtranslate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 153)));
+        gtranslate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gtranslate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel14MouseClicked(evt);
+                gtranslateMouseClicked(evt);
             }
         });
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Audio_20px_2.png"))); // NOI18N
-        jLabel19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+        enSound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        enSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Audio_20px_2.png"))); // NOI18N
+        enSound.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
+        enSound.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        enSound.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
+                enSoundMouseClicked(evt);
             }
         });
 
@@ -608,12 +569,13 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(102, 0, 102));
         jLabel25.setText("oogle");
 
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Audio_20px_1.png"))); // NOI18N
-        jLabel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
-        jLabel31.addMouseListener(new java.awt.event.MouseAdapter() {
+        viSound.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viSound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Audio_20px_1.png"))); // NOI18N
+        viSound.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 0, 102)));
+        viSound.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viSound.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel31MouseClicked(evt);
+                viSoundMouseClicked(evt);
             }
         });
 
@@ -658,9 +620,9 @@ public class DictionaryApplication extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(GoogleAPILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gtranslate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(enSound, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(viSound, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel34, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -681,7 +643,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 .addGap(0, 25, Short.MAX_VALUE))
         );
 
-        GoogleAPILayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel14, jLabel19, jLabel31});
+        GoogleAPILayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {enSound, gtranslate, viSound});
 
         GoogleAPILayout.setVerticalGroup(
             GoogleAPILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -704,15 +666,15 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addGroup(GoogleAPILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(GoogleAPILayout.createSequentialGroup()
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(gtranslate, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
                         .addComponent(jLabel33)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(enSound, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel32)
                         .addGap(0, 0, 0)
-                        .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viSound, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1))
@@ -777,6 +739,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         confirmButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         confirmButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icons8_Checked_20px.png"))); // NOI18N
         confirmButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 64, 101)));
+        confirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         confirmButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmButtonMouseClicked(evt);
@@ -784,10 +747,11 @@ public class DictionaryApplication extends javax.swing.JFrame {
         });
 
         SelectedWord.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        SelectedWord.setForeground(new java.awt.Color(204, 0, 0));
         SelectedWord.setText("Target Word...");
 
         configNote.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
-        configNote.setForeground(new java.awt.Color(102, 0, 102));
+        configNote.setForeground(new java.awt.Color(204, 0, 51));
         configNote.setText("Notifications");
 
         javax.swing.GroupLayout configPanelLayout = new javax.swing.GroupLayout(configPanel);
@@ -1018,12 +982,15 @@ public class DictionaryApplication extends javax.swing.JFrame {
         } else {
             explain.setText(text);
             targetBox.setText(s);
+            switchTab(Database);
         }
     }//GEN-LAST:event_searchButtonMouseClicked
 
     private void showAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showAllMouseClicked
         // TODO add your handling code here:
+        showAll.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         showAllWords();
+        showAll.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_showAllMouseClicked
 
     private void targetKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_targetKeyPressed
@@ -1082,7 +1049,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
             SelectedWord.setVisible(true);
             reDefine.setVisible(false);
             reExplainWindow.setVisible(false);
-            configNote.setText("Delete from app(Not DB)?");
+            configNote.setText("Delete this word?");
             keyActivation = 1;
         }
     }//GEN-LAST:event_removeButtonMouseClicked
@@ -1095,7 +1062,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         SelectedWord.setVisible(false);
         reDefine.setVisible(true);
         reExplainWindow.setVisible(true);
-        configNote.setText("Add to app memory?(Not DB)");
+        configNote.setText("Add this word?");
         keyActivation = 2;
     }//GEN-LAST:event_addButtonMouseClicked
 
@@ -1110,7 +1077,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
             SelectedWord.setVisible(true);
             reDefine.setVisible(true);
             reExplainWindow.setVisible(true);
-            configNote.setText("Edit this word in app memory?");
+            configNote.setText("Edit this word?");
             keyActivation = 3;
         }
     }//GEN-LAST:event_editButtonMouseClicked
@@ -1174,12 +1141,14 @@ public class DictionaryApplication extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String s = targetBox.getText();
-            InputStream sound = audio.getAudio(s, "en");
-            audio.play(sound);
+            if (!"".equals(s)) {
+                soundButton.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                InputStream sound = audio.getAudio(s, "en");
+                audio.play(sound);
+                soundButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
 
-        } catch (IOException e) {
-            e.getMessage();
-        } catch (JavaLayerException e) {
+        } catch (IOException | JavaLayerException e) {
             e.getMessage();
         }
     }//GEN-LAST:event_soundButtonMouseClicked
@@ -1204,64 +1173,83 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+    private void gtranslateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gtranslateMouseClicked
         // TODO add your handling code here:
         try {
-
             String s = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
-            VietnameseBox.setText(s);
+            if (!"".equals(s)) {
+                gtranslate.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                VietnameseBox.setText(s);
+                gtranslate.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
         } catch (Exception e) {
             e.getMessage();
         }
 
-    }//GEN-LAST:event_jLabel14MouseClicked
+    }//GEN-LAST:event_gtranslateMouseClicked
 
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+    private void enSoundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enSoundMouseClicked
         // TODO add your handling code here:
         try {
             String s = jTextField1.getText();
-            InputStream sound = audio.getAudio(s, "en");
-            audio.play(sound);
-
-        } catch (Exception e) {
+            if (!"".equals(s)) {
+                enSound.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                InputStream sound = audio.getAudio(s, "en");
+                audio.play(sound);
+                enSound.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+        } catch (IOException | JavaLayerException e) {
             e.getMessage();
         }
-    }//GEN-LAST:event_jLabel19MouseClicked
+    }//GEN-LAST:event_enSoundMouseClicked
 
-    private void jLabel31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel31MouseClicked
+    private void viSoundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viSoundMouseClicked
         // TODO add your handling code here:
         try {
             String s = translator.callUrlAndParseResult2("en", "vi", jTextField1.getText());
-
-            InputStream sound = audio.getAudio(s, "vi");
-            audio.play(sound);
+            if (!"".equals(s)) {
+                viSound.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                InputStream sound = audio.getAudio(s, "vi");
+                audio.play(sound);
+                viSound.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
 
         } catch (Exception e) {
             e.getMessage();
         }
-    }//GEN-LAST:event_jLabel31MouseClicked
+    }//GEN-LAST:event_viSoundMouseClicked
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         // TODO add your handling code here:
         try {
+            jTextField1.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
                 String s = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
                 VietnameseBox.setText(s);
             }
+            jTextField1.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
         } catch (Exception e) {
             e.getMessage();
         }
 
     }//GEN-LAST:event_jTextField1KeyReleased
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void exportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exportMouseClicked
         // TODO add your handling code here:
         try {
-            refresh();
-        } catch (Exception e) {
+            export.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            dict_manager.dictionaryExportToFile();
+
+            JOptionPane.showMessageDialog(null, "<html>Exported to file <b><i>DictionariesUpdated.txt</i></b></html>", "Notification", JOptionPane.NO_OPTION);
+            export.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        } catch (IOException e) {
             e.getMessage();
+        } finally {
+            Cursor.getDefaultCursor();
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+
+    }//GEN-LAST:event_exportMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1318,18 +1306,17 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JLabel confirmButton;
     private javax.swing.JLabel connectionStatus;
     private javax.swing.JLabel editButton;
+    private javax.swing.JLabel enSound;
     private javax.swing.JLabel explain;
+    private javax.swing.JLabel export;
+    private javax.swing.JLabel gtranslate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -1340,12 +1327,9 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1373,5 +1357,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JLabel soundButton;
     private javax.swing.JTextField target;
     private javax.swing.JLabel targetBox;
+    private javax.swing.JLabel viSound;
     // End of variables declaration//GEN-END:variables
 }

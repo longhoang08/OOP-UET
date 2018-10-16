@@ -29,7 +29,7 @@ public class Translator {
   
   URL obj = new URL(url);
   HttpURLConnection con = (HttpURLConnection) obj.openConnection(); 
-  con.setRequestProperty("User-Agent", "Mozilla/5.0");
+  con.setRequestProperty("User-Agent", "Mozilla/5");
  
   BufferedReader in = new BufferedReader(
     new InputStreamReader(con.getInputStream(),"utf8"));
