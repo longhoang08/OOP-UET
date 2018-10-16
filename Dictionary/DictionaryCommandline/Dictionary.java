@@ -26,7 +26,6 @@ public class Dictionary {
     public void insertWord(String English, String Vietnamese) {
         int check = storeTargetWord.search(English);
         if (check == -1) {
-            // System.out.println("DCM sai roi: " + English); //DCM xoa di!
             Word new_word = new Word(English, Vietnamese);
             Dict.add(new_word);
             storeTargetWord.insert(English, Dict.size() - 1);
