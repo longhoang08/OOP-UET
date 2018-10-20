@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javazoom.jl.decoder.JavaLayerException;
@@ -729,11 +726,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         reDefine.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         reDefine.setText("Edit/Add new word...");
         reDefine.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "English", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Consolas", 0, 11), new java.awt.Color(102, 64, 101))); // NOI18N
-        reDefine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reDefineActionPerformed(evt);
-            }
-        });
 
         confirmButton.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         confirmButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -1034,10 +1026,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_targetKeyPressed
 
-    private void reDefineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDefineActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reDefineActionPerformed
-
     private void removeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_removeButtonMouseClicked
         // TODO add your handling code here:
         switchPanel(configPanel);
@@ -1093,8 +1081,10 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 explain.setText("");
                 dlm.clear();
                 configNote.setText("Remove Successfully.");
+                JOptionPane.showMessageDialog(null, "<html><b>Delete successfully</b></html>", "DONE", JOptionPane.NO_OPTION);
             } else {
                 configNote.setText("Remove failed.");
+                JOptionPane.showMessageDialog(null, "<html><b>This word does not exist</b></html>", "FAILED", JOptionPane.NO_OPTION);
             }
         }
         if (keyActivation == 2) {
@@ -1103,8 +1093,10 @@ public class DictionaryApplication extends javax.swing.JFrame {
             boolean t = dictionary.insertWord(define, explain);
             if (t) {
                 configNote.setText("Add Successfully.");
+                JOptionPane.showMessageDialog(null, "<html><b>Insert Successfully</b></html>", "DONE", JOptionPane.NO_OPTION);
             } else {
                 configNote.setText("Duplicate insert.");
+                JOptionPane.showMessageDialog(null, "<html><b>Duplicate Insert</b></html>", "FAILED", JOptionPane.NO_OPTION);
             }
         }
         if (keyActivation == 3) {
@@ -1116,8 +1108,10 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 configNote.setText("Edit Successfully.");
                 targetBox.setText(reDef);
                 explain.setText(reEx);
+                JOptionPane.showMessageDialog(null, "<html><b>Edit Successfully</b></html>", "Notification", JOptionPane.NO_OPTION);
             } else {
                 configNote.setText("Edit failed.");
+                JOptionPane.showMessageDialog(null, "<html><b>Please select word for editing</b></html>", "ERROR", JOptionPane.NO_OPTION);
             }
         }
     }//GEN-LAST:event_confirmButtonMouseClicked
@@ -1245,10 +1239,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         } catch (IOException e) {
             e.getMessage();
-        } finally {
-            Cursor.getDefaultCursor();
-        }
-
+        } 
     }//GEN-LAST:event_exportMouseClicked
 
     /**

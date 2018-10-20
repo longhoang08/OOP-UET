@@ -1,0 +1,2 @@
+DictionaryGUI.TrieNode
+DictionaryGUI.Trie
