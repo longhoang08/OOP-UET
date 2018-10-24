@@ -1,4 +1,5 @@
 package DictionaryGUI;
+
 import java.util.*;
 
 class TrieNode {
@@ -7,14 +8,16 @@ class TrieNode {
     private int idArray;
 
     public TrieNode() {
-        children = new TrieNode[95];
+        children = new TrieNode[ALL_CHAR];
         idArray = -1;
-        for (int i = 0; i < ALL_CHAR; i++) {
+        for (int i = 0; i < ALL_CHAR; i++) 
+        {
             children[i] = null;
         }
     }
 
-    public TrieNode[] getChildren() {
+    public TrieNode[] getChildren() 
+    {
         return children;
     }
 
@@ -22,7 +25,8 @@ class TrieNode {
         return idArray;
     }
 
-    public void setIdArray(int i) {
+    public void setIdArray(int i) 
+    {
         idArray = i;
     }
 
@@ -31,22 +35,27 @@ class TrieNode {
 public class Trie {
     private TrieNode root;
 
-    public Trie() {
+    public Trie() 
+    {
         root = new TrieNode();
     }
 
-    public Trie(TrieNode root) {
+    public Trie(TrieNode root) 
+    {
         this.root = root;
     }
 
-    public TrieNode getRoot() {
+    public TrieNode getRoot() 
+    {
         return root;
     }
 
-    public void resetId(String key, int id) {
+    public void resetId(String key, int id) 
+    {
 
         TrieNode pointer = root;
-        for (int i = 0; i < key.length(); i++) {
+        for (int i = 0; i < key.length(); i++) 
+        {
             int index = key.charAt(i) - ' ';
             if(index>94) continue;
             pointer = pointer.getChildren()[index];
@@ -55,13 +64,16 @@ public class Trie {
         pointer.setIdArray(id);
     }
 
-    public void insert(String key, int indexOfArray) {
+    public void insert(String key, int indexOfArray) 
+    {
 
         TrieNode pointer = root;
-        for (int i = 0; i < key.length(); i++) {
+        for (int i = 0; i < key.length(); i++) 
+        {
             int index = key.charAt(i) - ' ';
-            if(index>94) continue;
-            if (pointer.getChildren()[index] == null) {
+            if(index >= TrieNode.ALL_CHAR) continue;
+            if (pointer.getChildren()[index] == null) 
+            {
                 pointer.getChildren()[index] = new TrieNode();
             }
             pointer = pointer.getChildren()[index];
@@ -69,36 +81,38 @@ public class Trie {
         pointer.setIdArray(indexOfArray);
     }
 
-    public int search(String key) {
+    public int search(String key) 
+    {
         TrieNode pointer = root;
-        for (int i = 0; i < key.length(); i++) {
+        for (int i = 0; i < key.length(); i++) 
+        {
             int index = key.charAt(i) - ' ';
-            if(index>94) continue;
-            if (pointer.getChildren()[index] != null) {
+            if(index >= TrieNode.ALL_CHAR) continue;
+            if (pointer.getChildren()[index] != null)          
                 pointer = pointer.getChildren()[index];
-            } else {
+            else 
                 return -1;
-            }
         }
-        if (pointer != null && pointer.getIdArray() >= 0) {
+        if (pointer != null && pointer.getIdArray() >= 0) 
             return pointer.getIdArray();
-        } else {
+        else 
             return -1; // Can't find anything
-        }
     }
 
-    public int remove(String key) { // set -1 for inArray and return the indexOfArrayList
+    public int remove(String key) // set -1 for inArray and return the indexOfArrayList
+    { 
 
         TrieNode pointer = root;
         for (int i = 0; i < key.length(); i++) {
             int index = (int) key.charAt(i) - ' ';
-            if(index>94) continue;
-            if (pointer.getChildren()[index] != null) {
+            if(index >= TrieNode.ALL_CHAR) continue;
+            if (pointer.getChildren()[index] != null) 
                 pointer = pointer.getChildren()[index];
-            } else
+            else
                 return -1;
         }
-        if (pointer != null && pointer.getIdArray() >= 0) {
+        if (pointer != null && pointer.getIdArray() >= 0) 
+        {
             int temp = pointer.getIdArray(); // remove from Trie
             pointer.setIdArray(-1);
             return temp;
@@ -106,9 +120,8 @@ public class Trie {
             return -1; // Can't find anything
     }
 
-    public ArrayList<String> suggestion(String s, boolean permission) {
-        
-        
+    public ArrayList<String> suggestion(String s, boolean permission) 
+    {
         ArrayList<String> possibilities = new ArrayList<String>();
         if (s.length() == 0&&!permission)
             return possibilities;
@@ -116,7 +129,7 @@ public class Trie {
         TrieNode pointer = root;
         for (int i = 0; i < key.length(); i++) {
             int index = s.charAt(i) - ' ';
-            if(index>94) continue;
+            if(index >= TrieNode.ALL_CHAR) continue;
             if (pointer.getChildren()[index] != null) {
                 pointer = pointer.getChildren()[index];
             } else {
@@ -126,13 +139,10 @@ public class Trie {
         for (int i = 0; i < TrieNode.ALL_CHAR; i++) {
             if (pointer.getChildren()[i] != null) {
                 char addition_char = (char) ((int) (' ') + i);
-                if (pointer.getChildren()[i].getIdArray() != -1) {
+                if (pointer.getChildren()[i].getIdArray() != -1) 
                     possibilities.add(s + addition_char);
-                }
                 ArrayList<String> additionalArrayList = suggestion(s + addition_char, permission);
-                
-              
-                     possibilities.addAll(additionalArrayList);
+                possibilities.addAll(additionalArrayList);
             }
         }
 
