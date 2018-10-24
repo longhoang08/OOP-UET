@@ -84,7 +84,7 @@ public class FormatOutput
         String eng = parts[0];
         String vie = parts[1];
         String result = caculateNewVnm(vie);
-        if (result.equals("") != false)
+        if (result.equals("") == false)
         {
             result = eng + "\t" + result;
             return result;
