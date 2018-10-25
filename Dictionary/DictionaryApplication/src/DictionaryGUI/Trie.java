@@ -81,9 +81,10 @@ public class Trie {
         pointer.setIdArray(indexOfArray);
     }
 
-    public int search(String key) 
+    public int search(String s) 
     {
         TrieNode pointer = root;
+        String key = s.toLowerCase();
         for (int i = 0; i < key.length(); i++) 
         {
             int index = key.charAt(i) - ' ';
