@@ -969,6 +969,16 @@ public class DictionaryApplication extends javax.swing.JFrame {
         String s = target.getText();
         String text = dictionary.searchWord(s);
         if (text == null) {
+            try {
+                jTextField1.setText(s);
+                String r = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
+                if (!"".equals(r)) {
+                    VietnameseBox.setText(r);
+                    switchTab(GoogleAPI);
+                }
+            } catch (Exception e) {
+                e.getMessage();
+            }
             targetBox.setText("No Matches were found.");
             explain.setText(" ");
         } else {
@@ -992,13 +1002,24 @@ public class DictionaryApplication extends javax.swing.JFrame {
             String s = target.getText();
             String text = dictionary.searchWord(s);
             if (text == null) {
+                try {
+                    jTextField1.setText(s);
+                    String r = translator.callUrlAndParseResult("en", "vi", jTextField1.getText());
+                    if (!"".equals(r)) {
+                        VietnameseBox.setText(r);
+                        switchTab(GoogleAPI);
+                    }
+                } catch (Exception e) {
+                    e.getMessage();
+                }
                 targetBox.setText("No Matches were found.");
                 explain.setText(" ");
             } else {
                 explain.setText(text);
                 targetBox.setText(s);
+                switchTab(Database);
             }
-            switchTab(Database);
+
         }
         if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
 
@@ -1239,7 +1260,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         } catch (IOException e) {
             e.getMessage();
-        } 
+        }
     }//GEN-LAST:event_exportMouseClicked
 
     /**
