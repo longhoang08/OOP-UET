@@ -1,7 +1,8 @@
 # English - Vietnamese Dictionary 
 
 ## Author: 
-  Hoang Bao Long - longhoang08
-  Nguyen Thanh Dat - thanhdatuetk62
+- Hoàng Bảo Long - [longhoang08](https://www.facebook.com/longhoang08)
 
-K62-C-CLC - University of Engineering and Technology
+- Nguyễn Thành Đạt - [thanhdatuetk62](https://www.facebook.com/profile.php?id=100004923245703)
+
+###K62-C-CLC - University of Engineering and Technology
