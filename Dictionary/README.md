@@ -1,6 +1,6 @@
 # English - Vietnamese Dictionary 
 
-##Author: 
+## Author: 
   Hoang Bao Long - longhoang08
   Nguyen Thanh Dat - thanhdatuetk62
 
